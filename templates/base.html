@@ -1,13 +1,35 @@
+{% load static %}
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Сайт{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'recipeapp/css/styles.css' %}">
 </head>
 <body>
-    <h1>Главная</h1>
+    <div class="header">
+        <header class="center header-items">
+            <a href="{% url 'index' %}"><img class="header_icons_left" src="{% static 'recipeapp/images/cooking.svg' %}" alt="cooking"></a>
+            <a class="header_link" href="">Показать все рецепты</a>
+            <a class="header_link" href="">Добавить рецепт</a>
+            <a class="header_link" href="">Найти рецепт</a>
+            <a class="header_link" href="">Категории</a>
+            <a href=""><img class="header_icons_rigth" src="{% static 'recipeapp/images/login.svg' %}" alt="cooking"></a>
+        </header>
+    </div>
+
+    <div class="content">
     {% block content %}
         <p>Скоро тут появится текст...</p>
     {% endblock %}
+    </div>
+    <div class="footer">
+        <div class="center footer_items">
+            <p>2024 ©</p>
+            <p>Ссылка на whatsapp</p>
+            <p>Ссылка на телегу</p>
+        </div>
+    </div>
 </body>
 </html>
