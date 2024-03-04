@@ -2,16 +2,17 @@ from django import forms
 from .models import Recipe
 
 
-class ProductForm(forms.ModelForm):
+class RecipeForm(forms.ModelForm):
     class Meta:
         model = Recipe
-        exclude = ['date_product_add']
+        exclude = ['date_addition']
         labels = {'title': 'Наименование',
                   'description': 'Описание',
-                  'price': 'Стоимость',
-                  'quantity_of_product': 'количество',
-                  'image': 'Изображение'}
+                  'cooking_steps': 'Шаги приготовления',
+                  'cooking_time': 'Время приготовления',
+                  'image': 'Изображение',
+                  'author': 'Автор'}
 
     def __init__(self, *args, **kwargs):
-        super(ProductForm, self).__init__(*args, **kwargs)
+        super(RecipeForm, self).__init__(*args, **kwargs)
         self.fields['image'].required = False

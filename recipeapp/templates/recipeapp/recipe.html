@@ -1,17 +1,29 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Рецепт{% endblock %}
 
 {% block content %}
-    <h1>{{ recipe.title }}</h1>
-    <p>{{ recipe.description }}</p>
-    <p>{{ recipe.cooking_steps }}</p>
-    <p>{{ recipe.cooking_time }}</p>
-    <p>{{ recipe.author }}</p>
-    <p>{{ recipe.date_addition }}</p>
-    {% if recipe.image and recipe.image != 'False' %}
-        <img src="{{ recipe.image.url }}" width="200">
-    {% endif %}
+    <div class="center2 recipe_item">
+        <h1>{{ recipe.title }}</h1>
+        <div class="recipe_items_top">
+            <div>
+                {% if recipe.image and recipe.image != 'False' %}
+                <img src="{{ recipe.image.url }}" width="350">
+                {% endif %}
+            </div>
+            <div class="recipe_text">
+                <p><strong>Описание:</strong> {{ recipe.description }}</p>
+                <p><strong>Время приготовления:</strong> {{ recipe.cooking_time }} мин</p>
+                <p><strong>Автор:</strong> {{ recipe.author }}</p>
+                <p><strong>Дата добавления:</strong> {{ recipe.date_addition }}</p>
+            </div>
+
+        </div>
+        <div class="recipe_items_bottom">
+            <p>{{ recipe.cooking_steps }}</p>
+        </div>
+    </div>
 
 
 
