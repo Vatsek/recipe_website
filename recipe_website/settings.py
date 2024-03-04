@@ -25,7 +25,10 @@ SECRET_KEY = 'django-insecure-3%s$0-1xhiyno*+iy)&ch(m!fvp$dz+ndxp=o+qbhcx+l@_6xl
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '192.168.1.34',
+    '127.0.0.1',
+]
 
 
 # Application definition
@@ -37,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'recipeapp',
 ]
 
 MIDDLEWARE = [
