@@ -1,12 +1,7 @@
 from django.urls import path
-from django.conf import settings
-from django.conf.urls.static import static
+from . import views
 
 
 urlpatterns = [
-    # path('admin/', admin.site.urls),
+    path('recipe/<int:recipe_id>/', views.get_recipe_by_id, name='get_recipe'),
 ]
-
-
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
