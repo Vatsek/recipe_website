@@ -5,14 +5,25 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Сайт{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'recipeapp/css/styles.css' %}">
+
+    <link rel="stylesheet" href="{% static 'recipeapp/css/base.css' %}">
+
+    {% block style %}
+    {% endblock %}
 </head>
 <body>
     <div class="header">
         <header class="center header-items">
-            <a href="{% url 'index' %}"><img class="header_icons_left" src="{% static 'recipeapp/images/cooking.svg' %}" alt="cooking"></a>
-            <a class="header_link" href="">Показать все рецепты</a>
-            <a class="header_link" href="">Добавить рецепт</a>
+            <a class="header_link" href="{% url 'index' %}">
+                <div class="header-items-left">
+                <img class="header_icons_left" src="{% static 'recipeapp/images/cooking.svg' %}" alt="cooking">
+                <p>Кушайте много Кушайте вкусно</p>
+                </div>
+                </a>
+
+            <a class="header_link" href= "{% url 'all_recipes' %}">Показать все рецепты</a>
+
+            <a class="header_link" href= "{% url 'add_recipe' %}">Добавить рецепт</a>
             <a class="header_link" href="">Найти рецепт</a>
             <a class="header_link" href="">Категории</a>
             <a href=""><img class="header_icons_rigth" src="{% static 'recipeapp/images/login.svg' %}" alt="cooking"></a>

@@ -7,7 +7,18 @@ from django.urls import reverse
 
 
 def index(request):
-    return render(request, 'recipeapp/index.html')
+    title = 'Кушайте много, кушайте вкусно'
+    heading = '5 случайных рецептов'
+    recipes = Recipe.objects.order_by('?')[:5]
+    return render(request, 'recipeapp/index.html', {'recipes': recipes, 'title': title, 'heading': heading})
+
+
+def all_recipes(request):
+    title = 'Все рецепты'
+    heading = 'Все рецепты'
+    recipes = Recipe.objects.all()
+    return render(request, 'recipeapp/index.html', {'recipes': recipes, 'title': title, 'heading': heading})
+
 
 
 def get_recipe_by_id(request, recipe_id):
@@ -23,7 +34,6 @@ def add_recipe(request):
         if form.is_valid():
             new_recipe = form.save()
             return redirect('get_recipe', new_recipe.pk)
-
     else:
         form = RecipeForm()
     return render(request, 'recipeapp/recipe_form.html',

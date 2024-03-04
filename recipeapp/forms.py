@@ -12,6 +12,11 @@ class RecipeForm(forms.ModelForm):
                   'cooking_time': 'Время приготовления',
                   'image': 'Изображение',
                   'author': 'Автор'}
+        # empty_label = {'author': 'Автор не выбран'}
+        widgets = {
+            'title': forms.TextInput(attrs={'class': 'myfieldclass'}),
+        }
+
 
     def __init__(self, *args, **kwargs):
         super(RecipeForm, self).__init__(*args, **kwargs)

@@ -5,8 +5,9 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
-    path('recipe/<int:recipe_id>/', views.get_recipe_by_id, name='get_recipe'),
-    path('add_recipe/', views.add_recipe, name='add_recipe')
+    path('recipe/<int:recipe_id>/', views.get_recipe_by_id, name='recipe'),
+    path('add_recipe/', views.add_recipe, name='add_recipe'),
+    path('all_recipes', views.all_recipes, name='all_recipes'),
 ]
 
 if settings.DEBUG:
