@@ -26,8 +26,15 @@
             <a class="header_link" href= "{% url 'add_recipe' %}">Добавить рецепт</a>
             <a class="header_link" href= "{% url 'search_recipes' %}">Найти рецепт</a>
             <a class="header_link" href= "{% url 'categories' %}">Категории</a>
-
-            <a href=""><img class="header_icons_rigth" src="{% static 'recipeapp/images/login.svg' %}" alt="cooking"></a>
+            <div>
+            {% if user.is_authenticated %}
+                {{ user.username }} | <a href="{% url 'usersapp:logout' %}">
+                    <img class="header_icons_rigth" src="{% static 'recipeapp/images/logout.svg' %}" alt="logout">
+                </a>
+            {% else %}
+                <a href="{% url 'usersapp:login' %}"><img class="header_icons_rigth" src="{% static 'recipeapp/images/login.svg' %}" alt="login"></a>
+            {% endif %}
+            </div>
         </header>
     </div>
 
