@@ -17,6 +17,7 @@ class Author(models.Model):
         super().save(*args, **kwargs)
 
 
+
 class Recipe(models.Model):
     title = models.CharField(max_length=100, verbose_name=u'Название')
     description = models.TextField(verbose_name=u'Описание')
@@ -25,3 +26,14 @@ class Recipe(models.Model):
     image = models.ImageField(upload_to='images', blank=True, verbose_name=u'Изображение')
     author = models.ForeignKey(Author, on_delete=models.CASCADE, verbose_name=u'Автор')
     date_addition = models.DateField(auto_now_add=True, verbose_name=u'Дата добавления')
+
+    def __str__(self):
+        return self.title
+
+
+class RecipeCategories(models.Model):
+    title = models.CharField(max_length=150, unique=True, verbose_name=u'Название категории')
+    recipes = models.ManyToManyField(Recipe, verbose_name=u'Рецепты')
+
+    def get_recipes(self):
+        return self.recipes.all()

@@ -18,6 +18,7 @@
             </div>
             <div class="recipe_text">
                 <p><strong>Описание:</strong> {{ recipe.description }}</p>
+                <p><strong>Категория: </strong> {{ recipe_categories.title }}</p>
                 <p><strong>Время приготовления:</strong> {{ recipe.cooking_time }} мин</p>
                 <p><strong>Автор:</strong> {{ recipe.author }}</p>
                 <p><strong>Дата добавления:</strong> {{ recipe.date_addition }}</p>
@@ -27,6 +28,7 @@
         <div class="recipe_items_bottom">
             <p>{{ recipe.cooking_steps }}</p>
         </div>
+        <button><a href="{% url 'recipe_update' recipe_id=recipe.pk %}">Изменить</a></button>
     </div>
 
 

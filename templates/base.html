@@ -24,8 +24,9 @@
             <a class="header_link" href= "{% url 'all_recipes' %}">Показать все рецепты</a>
 
             <a class="header_link" href= "{% url 'add_recipe' %}">Добавить рецепт</a>
-            <a class="header_link" href="">Найти рецепт</a>
-            <a class="header_link" href="">Категории</a>
+            <a class="header_link" href= "{% url 'search_recipes' %}">Найти рецепт</a>
+            <a class="header_link" href= "{% url 'categories' %}">Категории</a>
+
             <a href=""><img class="header_icons_rigth" src="{% static 'recipeapp/images/login.svg' %}" alt="cooking"></a>
         </header>
     </div>
