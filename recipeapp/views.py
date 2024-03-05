@@ -3,7 +3,6 @@ from .forms import RecipeForm, SearchForm
 from .models import Recipe, RecipeCategories
 
 
-
 def index(request):
     title = 'Кушайте много, кушайте вкусно'
     heading = '5 случайных рецептов'
@@ -53,9 +52,14 @@ def recipe_update_form(request, recipe_id):
             recipe.description = form.cleaned_data['description']
             recipe.cooking_steps = form.cleaned_data['cooking_steps']
             recipe.cooking_time = form.cleaned_data['cooking_time']
-            recipe.image = form.cleaned_data['image']
             recipe.author = form.cleaned_data['author']
+            a = recipe.image
+            # recipe.image = form.cleaned_data['image']
+            b = recipe.image
             recipe.save()
+            if form.cleaned_data['image'] != None:
+                recipe.image = form.cleaned_data['image']
+                recipe.save()
             return redirect('recipe', recipe_id)
 
     else:
