@@ -9,10 +9,40 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block content %}
-    <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value='{{ input_value }}'>
+
+<section>
+    <div class="center">
+    <form class="form" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label class="test" for="{{ form.title.id_for_label }}">Название 123456</label>
+            {{ form.title }}
+        </div>
+        <div class="form-group">
+            <label class="" for="{{ form.description.id_for_label }}">Описание</label>
+            {{ form.description }}
+        </div>
+        <div class="form-group">
+            <label class="" for="{{ form.cooking_steps.id_for_label }}">Шаги приготовления</label>
+            {{ form.cooking_steps }}
+        </div>
+        <div class="form-group">
+            <label class="" for="{{ form.cooking_time.id_for_label }}">Время приготовления</label>
+            {{ form.cooking_time }}
+        </div>
+        <div class="form-group">
+            <label class="" for="{{ form.image.id_for_label }}">Фото</label>
+            {{ form.image }}
+        </div>
+        <div class="form-group">
+            <label class="" for="{{ form.author.id_for_label }}">Автор</label>
+            {{ form.author }}
+        </div>
+        <input type="submit" value='{{ input_value }}'>
 </form>
+        </div>
+
+</section>
 
 {% endblock %}

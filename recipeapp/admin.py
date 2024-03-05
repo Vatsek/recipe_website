@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Recipe, Author
+from .models import Recipe, Author, RecipeCategories
 
 @admin.register(Author)
 class ClientAdmin(admin.ModelAdmin):
@@ -17,3 +17,8 @@ class ClientAdmin(admin.ModelAdmin):
     list_display = ['id', 'title', 'description', 'cooking_steps', 'cooking_time', 'image', 'author']
     fieldsets = (None, {'fields': ['title', 'description', 'cooking_steps', 'cooking_time', 'image', 'author']}),
     readonly_fields = ['id', 'date_addition']
+
+
+@admin.register(RecipeCategories)
+class ClientAdmin(admin.ModelAdmin):
+    list_display = ['title']
