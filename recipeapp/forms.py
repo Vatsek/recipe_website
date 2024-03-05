@@ -30,5 +30,6 @@ class RecipeForm(forms.ModelForm):
         self.fields['image'].required = False
 
 
+
 class SearchForm(forms.Form):
     title = forms.CharField(max_length=50)
