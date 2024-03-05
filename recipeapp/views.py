@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from .forms import RecipeForm, SearchForm
 from .models import Recipe, Category
@@ -23,15 +24,17 @@ def get_recipe_by_id(request, recipe_id):
     return render(request, 'recipeapp/recipe.html', {'recipe': recipe})
 
 
+@login_required
 def add_recipe(request):
     title = 'Добавление рецепта'
     input_value = 'Добавить'
     if request.method == 'POST':
         form = RecipeForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
-            new_recipe = form.save()
-            return redirect('recipe', new_recipe.pk)
+            recipe = form.save(commit=False)
+            recipe.author = request.user
+            recipe.save()
+            return redirect('recipe', recipe.pk)
     else:
         form = RecipeForm()
     return render(request, 'recipeapp/recipe_form.html',
@@ -40,6 +43,11 @@ def add_recipe(request):
                    'input_value': input_value})
 
 
+#todo посмотреть как связать автора и userа
+
+
+
+@login_required()
 def recipe_update_form(request, recipe_id):
     title = 'Изменение рецепта'
     input_value = 'Изменить'
@@ -52,7 +60,6 @@ def recipe_update_form(request, recipe_id):
             recipe.cooking_steps = form.cleaned_data['cooking_steps']
             recipe.cooking_time = form.cleaned_data['cooking_time']
             recipe.category = form.cleaned_data['category']
-            recipe.author = form.cleaned_data['author']
             recipe.save()
             if form.cleaned_data['image'] != None:
                 recipe.image = form.cleaned_data['image']

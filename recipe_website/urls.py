@@ -24,6 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
     path('recipes/', include('recipeapp.urls')),
+    path('users/', include('usersapp.urls', namespace='usersapp')),
 ]
 
 if settings.DEBUG:
