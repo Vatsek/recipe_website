@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import RecipeForm, SearchForm
-from .models import Recipe, RecipeCategories
+from .models import Recipe, Category
 
 
 def index(request):
@@ -19,9 +19,8 @@ def all_recipes(request):
 
 
 def get_recipe_by_id(request, recipe_id):
-    recipe_categories = RecipeCategories.objects.get(recipes=recipe_id)
     recipe = Recipe.objects.get(pk=recipe_id)
-    return render(request, 'recipeapp/recipe.html', {'recipe': recipe, 'recipe_categories': recipe_categories})
+    return render(request, 'recipeapp/recipe.html', {'recipe': recipe})
 
 
 def add_recipe(request):
@@ -52,10 +51,8 @@ def recipe_update_form(request, recipe_id):
             recipe.description = form.cleaned_data['description']
             recipe.cooking_steps = form.cleaned_data['cooking_steps']
             recipe.cooking_time = form.cleaned_data['cooking_time']
+            recipe.category = form.cleaned_data['category']
             recipe.author = form.cleaned_data['author']
-            a = recipe.image
-            # recipe.image = form.cleaned_data['image']
-            b = recipe.image
             recipe.save()
             if form.cleaned_data['image'] != None:
                 recipe.image = form.cleaned_data['image']
@@ -88,13 +85,12 @@ def search_recipes(request):
 def categories(request):
     title = 'Категории'
     heading = 'Категории'
-    categories = RecipeCategories.objects.all()
+    categories = Category.objects.all()
     return render(request, 'recipeapp/categories.html', {'categories': categories, 'title': title, 'heading': heading})
 
 
 def recipes_by_categories(request, category_id):
     title = 'Рецепты по категории'
     heading = 'Все рецепты выбранной категории'
-    category = RecipeCategories.objects.get(pk=category_id)
-    recipes_lst = category.get_recipes()
-    return render(request, 'recipeapp/index.html', {'recipes': recipes_lst, 'title': title, 'heading': heading})
+    recipes = Recipe.objects.filter(category=category_id)
+    return render(request, 'recipeapp/index.html', {'recipes': recipes, 'title': title, 'heading': heading})

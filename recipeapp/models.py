@@ -17,23 +17,22 @@ class Author(models.Model):
         super().save(*args, **kwargs)
 
 
-
 class Recipe(models.Model):
     title = models.CharField(max_length=100, verbose_name=u'Название')
     description = models.TextField(verbose_name=u'Описание')
     cooking_steps = models.TextField(verbose_name=u'Шаги приготовления')
     cooking_time = models.IntegerField(default=0, validators=[MinValueValidator(1)], verbose_name=u'Время приготовления')
     image = models.ImageField(upload_to='images', blank=True, verbose_name=u'Изображение')
-    author = models.ForeignKey(Author, on_delete=models.CASCADE, verbose_name=u'Автор')
     date_addition = models.DateField(auto_now_add=True, verbose_name=u'Дата добавления')
+    author = models.ForeignKey('Author', on_delete=models.CASCADE, verbose_name=u'Автор')
+    category = models.ForeignKey('Category', on_delete=models.SET_NULL, null=True, verbose_name=u'Категория')
 
     def __str__(self):
         return self.title
 
 
-class RecipeCategories(models.Model):
+class Category(models.Model):
     title = models.CharField(max_length=150, unique=True, verbose_name=u'Название категории')
-    recipes = models.ManyToManyField(Recipe, verbose_name=u'Рецепты')
 
-    def get_recipes(self):
-        return self.recipes.all()
+    def __str__(self):
+        return self.title
