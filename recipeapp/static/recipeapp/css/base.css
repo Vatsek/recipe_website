@@ -1,0 +1,145 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+font-family: 'Lato', sans-serif;
+}
+
+.center {
+    max-width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.center2 {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+}
+
+
+.header {
+    background-color: green;
+}
+
+.header-items {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 75px;
+}
+
+.header-items-left {
+    display: flex;
+    max-width: 200px;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    font-size: 14px;
+    font-weight: 400;
+    text-decoration: none;
+}
+
+.header_icons_left {
+    width: 60px;
+    height: 60px;
+}
+
+.header-items-right {
+    width: 130px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.text-items-right {
+    color: white;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: normal;
+}
+
+
+.header_icons_rigth {
+    width: 35px;
+    height: 35px;
+}
+
+.header_link {
+    color: white;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration: none;
+}
+
+.menu-button {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.menu {
+    position: absolute;
+    top: 20px;
+    left: 0px;
+    min-width: 150px;
+    background-color: green;
+    display: none;
+    z-index: 1;
+    --box-shadow: 0 16px 24px 2px rgba(33, 37, 41, .04), 0 6px 30px 5px rgba(33, 37, 41, .08), 0 8px 10px -5px rgba(33, 37, 41, .3);
+    box-shadow: var(--box-shadow);
+    border-radius: 10px;
+}
+
+.menu-items {
+    margin-top: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.menu-button:hover .menu {
+    display: block;
+}
+
+.text_menu {
+    color: white;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration: none;
+}
+
+.content{
+    min-height: calc(100vh - 115px);
+}
+
+
+
+.footer {
+
+    background-color: green;
+}
+
+.footer_items {
+    width: 350px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+}
+
+.footer-icons {
+    width: 30px;
+}
+
+.footer-contacts {
+    display: flex;
+    gap: 5px;
+}

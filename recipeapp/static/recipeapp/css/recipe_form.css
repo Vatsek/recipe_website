@@ -1,0 +1,35 @@
+.center-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.form {
+    margin-top: 15px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    min-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    padding-left: 20px;
+    padding-right: 20px;
+    --box-shadow: 0 16px 24px 2px rgba(33, 37, 41, .04), 0 6px 30px 5px rgba(33, 37, 41, .08), 0 8px 10px -5px rgba(33, 37, 41, .3);
+    box-shadow: var(--box-shadow);
+    border-radius: 10px;
+}
+
+.text-form {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 5px;
+}
+
+.button {
+    width: 100px;
+}
+
