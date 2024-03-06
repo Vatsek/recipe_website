@@ -30,6 +30,7 @@
         </div>
         {% if request.user.is_authenticated and recipe.author == user %}
         <button><a href="{% url 'recipe_update' recipe_id=recipe.pk %}">Изменить</a></button>
+        <button><a href="{% url 'delete_recipe_question' recipe_id=recipe.pk %}">Удалить</a></button>
         {% endif %}
     </div>
 

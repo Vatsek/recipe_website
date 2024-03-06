@@ -7,14 +7,14 @@ from .models import Recipe, Category
 def index(request):
     title = 'Кушайте много, кушайте вкусно'
     heading = '5 случайных рецептов'
-    recipes = Recipe.objects.order_by('?')[:5]
+    recipes = Recipe.objects.filter(is_active=True).order_by('?')[:5]
     return render(request, 'recipeapp/index.html', {'recipes': recipes, 'title': title, 'heading': heading})
 
 
 def all_recipes(request):
     title = 'Все рецепты'
     heading = 'Все рецепты'
-    recipes = Recipe.objects.all()
+    recipes = Recipe.objects.filter(is_active=True).all()
     return render(request, 'recipeapp/index.html', {'recipes': recipes, 'title': title, 'heading': heading})
 
 
@@ -43,10 +43,6 @@ def add_recipe(request):
                    'input_value': input_value})
 
 
-#todo посмотреть как связать автора и userа
-
-
-
 @login_required()
 def recipe_update_form(request, recipe_id):
     title = 'Изменение рецепта'
@@ -73,13 +69,25 @@ def recipe_update_form(request, recipe_id):
                    'title': title,
                    'input_value': input_value})
 
+@login_required()
+def delete_recipe(request, recipe_id):
+    recipe = Recipe.objects.get(pk=recipe_id)
+    recipe.is_active = False
+    recipe.save()
+    return render(request, 'recipeapp/delete_recipe_complete.html')
+
+
+@login_required()
+def delete_recipe_question(request, recipe_id):
+    return render(request, 'recipeapp/delete_recipe_question.html', {'recipe_id': recipe_id})
+
 
 def search_recipes(request):
     if request.method == 'POST':
         form = SearchForm(request.POST)
         if form.is_valid():
             title = form.cleaned_data['title']
-            recipes = Recipe.objects.all().filter(title=title)
+            recipes = Recipe.objects.all().filter(title=title, is_active=True)
             title = 'Результат поиска'
             heading = 'Результат поиска'
             return render(request, 'recipeapp/index.html', {'recipes': recipes, 'title': title, 'heading': heading})
@@ -87,6 +95,8 @@ def search_recipes(request):
         form = SearchForm()
     return render(request, 'recipeapp/search_recipes_form.html',
                   {'form': form})
+
+#TODO задать в шаблоне отображения рецептов минимальный размер карточки
 
 
 def categories(request):
