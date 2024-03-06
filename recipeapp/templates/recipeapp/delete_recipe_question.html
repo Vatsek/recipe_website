@@ -2,17 +2,21 @@
 {% load static %}
 
 {% block style %}
-
+<link href="{% static 'recipeapp/css/delete.css' %}" rel="stylesheet">
 {% endblock %}
 
 {% block title %}Подтверждение удаления{% endblock %}
 
 {% block content %}
 
-    <div>
-        <h3>Вы действительно хотите удалить рецепт?</h3>
-        <button><a href="{% url 'delete_recipe' recipe_id=recipe_id %}">да</a></button>
-        <button><a href="{% url 'recipe' recipe_id=recipe_id %}">Нет</a></button>
+    <div class="center-from">
+        <div class="delete-card">
+            <h3>Вы действительно хотите удалить рецепт?</h3>
+            <div>
+                <a href="{% url 'delete_recipe' recipe_id=recipe_id %}"><button class="button">Да</button></a>
+                <a href="{% url 'recipe' recipe_id=recipe_id %}"><button class="button">Нет</button></a>
+            </div>
+        </div>
     </div>
 
 {% endblock %}

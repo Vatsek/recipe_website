@@ -1,8 +1,9 @@
 from django.contrib.auth import authenticate, login, logout
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.shortcuts import render, redirect
 from .forms import LoginUserForm, RegisterForm
+from recipeapp.models import Category
 
 
 def login_user(request):
@@ -20,7 +21,8 @@ def login_user(request):
                     return HttpResponseRedirect(reverse('index'))
     else:
         form = LoginUserForm()
-    return render(request, 'usersapp/login.html', {'form': form})
+        categories = Category.objects.all()
+    return render(request, 'usersapp/login.html', {'form': form, 'categories': categories})
 
 
 def logout_user(request):
@@ -39,4 +41,5 @@ def register(request):
             return redirect('index')
     else:
         form = RegisterForm()
-    return render(request, 'usersapp/register.html', {'form': form})
+        categories = Category.objects.all()
+    return render(request, 'usersapp/register.html', {'form': form, 'categories': categories})

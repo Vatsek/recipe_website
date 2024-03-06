@@ -24,10 +24,28 @@
             <a class="header_link" href= "{% url 'all_recipes' %}">Показать все рецепты</a>
             <a class="header_link" href= "{% url 'add_recipe' %}">Добавить рецепт</a>
             <a class="header_link" href= "{% url 'search_recipes' %}">Найти рецепт</a>
-            <a class="header_link" href= "{% url 'categories' %}">Категории</a>
-            <div>
+
+
+            <div class="menu-button">
+                <p class="header_link">Категории ▼</p>
+            <div class="menu">
+
+                        <div>
+                            <div class="menu-items">
+                                {% for category in categories %}
+                                <p><a  class="text_menu" href="{% url 'recipes_by_categories' category_id=category.pk %}">{{ category.title }}</a></p>
+                                {% endfor %}
+                            </div>
+                        </div>
+            </div>
+            </div>
+
+
+
+
+            <div class="header-items-right text-items-right">
             {% if user.is_authenticated %}
-                {{ user.username }} | <a href="{% url 'usersapp:logout' %}">
+                {{ user.username }}  <a href="{% url 'usersapp:logout' %}">
                     <img class="header_icons_rigth" src="{% static 'recipeapp/images/logout.svg' %}" alt="logout">
                 </a>
             {% else %}
@@ -44,9 +62,11 @@
     </div>
     <div class="footer">
         <div class="center footer_items">
-            <p>2024 ©</p>
-            <p>Ссылка на whatsapp</p>
-            <p>Ссылка на телегу</p>
+            <p>2024 © developed by Vatsek Pavel</p>
+            <div class="footer-contacts">
+                <a href="https://wa.me/9265974869" target="_blank"><img class="footer-icons" src="{% static 'recipeapp/images/whatsapp.png' %}" alt="whatsapp"></a>
+                <a href="https://t.me/+79265974869" target="_blank"><img class="footer-icons" src="{% static 'recipeapp/images/telegram.png' %}" alt="telegram"></a>
+             </div>
         </div>
     </div>
 </body>

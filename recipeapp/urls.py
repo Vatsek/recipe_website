@@ -14,7 +14,6 @@ urlpatterns = [
 
     path('all_recipes', views.all_recipes, name='all_recipes'),
     path('search_recipes', views.search_recipes, name='search_recipes'),
-    path('categories', views.categories, name='categories'),
     path('recipes_by_categories/<int:category_id>/', views.recipes_by_categories, name='recipes_by_categories'),
 ]
 

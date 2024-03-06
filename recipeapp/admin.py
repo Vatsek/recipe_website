@@ -14,7 +14,7 @@ class ClientAdmin(admin.ModelAdmin):
 
 @admin.register(Recipe)
 class ClientAdmin(admin.ModelAdmin):
-    list_display = ['id', 'title', 'description', 'cooking_steps', 'cooking_time', 'image', 'author', 'category']
+    list_display = ['id', 'title', 'description', 'cooking_steps', 'cooking_time', 'image', 'author', 'category', 'is_active']
     fieldsets = (None, {'fields': ['title', 'description', 'cooking_steps', 'cooking_time', 'image', 'author', 'category']}),
     readonly_fields = ['id', 'date_addition']
 

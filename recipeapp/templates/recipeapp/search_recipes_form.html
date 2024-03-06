@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block style %}
-<!--    <link href="{% static 'recipeapp/css/recipe_form1.css' %}" rel="stylesheet">-->
+<link href="{% static 'recipeapp/css/search_recipe.css' %}" rel="stylesheet">
 {% endblock %}
 
 
@@ -10,12 +10,17 @@
 
 {% block content %}
 
-    <div>
-        <form method = "post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{form.as_p }}
-        <input type="submit" value=Submit">
-</form>
+    <div class="center-search-form">
+        <div class="test">
+            <form class="search-form" method = "post" enctype="multipart/form-data">
+            {% csrf_token %}
+                <h2>Поиск</h2>
+            <div>
+                {{ form.title }}
+            </div>
+            <input class="button" type="submit" value= Найти">
+            </form>
+        </div>
     </div>
 
 {% endblock %}

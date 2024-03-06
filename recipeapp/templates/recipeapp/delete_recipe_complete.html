@@ -2,15 +2,17 @@
 {% load static %}
 
 {% block style %}
-
+<link href="{% static 'recipeapp/css/delete.css' %}" rel="stylesheet">
 {% endblock %}
 
 {% block title %}Рецепт удалён{% endblock %}
 
 {% block content %}
 
-    <div>
-        <h3>Рецепт удалён</h3>
+    <div class="center-from">
+        <div class="delete-card">
+            <h3>Рецепт удалён</h3>
+        </div>
     </div>
 
 {% endblock %}
