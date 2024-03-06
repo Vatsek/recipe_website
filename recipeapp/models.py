@@ -32,6 +32,7 @@ class Recipe(models.Model):
                                related_name='recipe',
                                verbose_name=u'Автор')
     category = models.ForeignKey('Category', on_delete=models.PROTECT, default='1', verbose_name=u'Категория')
+    is_active = models.BooleanField(default=True)
 
     def __str__(self):
         return self.title

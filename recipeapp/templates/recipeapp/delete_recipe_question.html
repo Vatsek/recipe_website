@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+
+{% endblock %}
+
+{% block title %}Подтверждение удаления{% endblock %}
+
+{% block content %}
+
+    <div>
+        <h3>Вы действительно хотите удалить рецепт?</h3>
+        <button><a href="{% url 'delete_recipe' recipe_id=recipe_id %}">да</a></button>
+        <button><a href="{% url 'recipe' recipe_id=recipe_id %}">Нет</a></button>
+    </div>
+
+{% endblock %}
