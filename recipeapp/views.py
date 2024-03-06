@@ -56,10 +56,9 @@ def recipe_update_form(request, recipe_id):
             recipe.cooking_steps = form.cleaned_data['cooking_steps']
             recipe.cooking_time = form.cleaned_data['cooking_time']
             recipe.category = form.cleaned_data['category']
-            recipe.save()
             if form.cleaned_data['image'] != None:
                 recipe.image = form.cleaned_data['image']
-                recipe.save()
+            recipe.save()
             return redirect('recipe', recipe_id)
 
     else:

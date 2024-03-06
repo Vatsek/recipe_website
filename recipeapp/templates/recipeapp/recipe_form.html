@@ -2,47 +2,41 @@
 {% load static %}
 
 {% block style %}
-    <link href="{% static 'recipeapp/css/recipe_form.css' %}" rel="stylesheet">
+<link href="{% static 'recipeapp/css/recipe_form.css' %}" rel="stylesheet">
 {% endblock %}
-
 
 {% block title %}{{ title }}{% endblock %}
 
 {% block content %}
+<section class="center-form">
 
-<section>
-    <div class="center">
-    <form class="form" method="post" enctype="multipart/form-data">
+    <form class="form " method="post" enctype="multipart/form-data">
         {% csrf_token %}
-
-        <div class="form-group">
-            <label class="test" for="{{ form.title.id_for_label }}">Название</label>
-            {{ form.title }}
+        <h1>{{ title }}</h1>
+        <div class="text-form" >
+            <strong><label for="{{ form.title.id_for_label }}">Название</label></strong>
+            <p>{{ form.title }}</p>
         </div>
-        <div class="form-group">
-            <label class="" for="{{ form.description.id_for_label }}">Описание</label>
-            {{ form.description }}
+        <div class="text-form" >
+            <p><strong><label class="" for="{{ form.description.id_for_label }}">Описание</label></strong></p>
+            <p>{{ form.description }}</p>
         </div>
-        <div class="form-group">
-            <label class="" for="{{ form.cooking_steps.id_for_label }}">Шаги приготовления</label>
-            {{ form.cooking_steps }}
+        <div>
+            <p><strong><label class="" for="{{ form.author.id_for_label }}">Категория </label></strong>{{ form.category }}</p>
         </div>
-        <div class="form-group">
-            <label class="" for="{{ form.cooking_time.id_for_label }}">Время приготовления</label>
-            {{ form.cooking_time }}
+        <div>
+            <p><strong><label class="" for="{{ form.cooking_time.id_for_label }}">Время приготовления</label></strong> {{ form.cooking_time }} мин</p>
         </div>
-        <div class="form-group">
-            <label class="" for="{{ form.image.id_for_label }}">Фото</label>
-            {{ form.image }}
+        <div class="text-form" >
+            <p><strong><label class="" for="{{ form.cooking_steps.id_for_label }}">Шаги приготовления</label></strong></p>
+            <p>{{ form.cooking_steps }} </p>
         </div>
-        <div class="form-group">
-            <label class="" for="{{ form.author.id_for_label }}">Категория</label>
-            {{ form.category }}
+            <p><strong><label class="" for="{{ form.image.id_for_label }}">Фото</label></strong>{{ form.image }}</p>
+        <div>
+            <input type="submit" value='{{ input_value }}'>
         </div>
-        <input type="submit" value='{{ input_value }}'>
-</form>
-        </div>
-
+    </form>
 </section>
+
 
 {% endblock %}
