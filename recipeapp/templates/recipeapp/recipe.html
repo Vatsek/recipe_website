@@ -20,7 +20,7 @@
                 <p><strong>Описание:</strong> {{ recipe.description }}</p>
                 <p><strong>Категория: </strong> {{ recipe.category }}</p>
                 <p><strong>Время приготовления:</strong> {{ recipe.cooking_time }} мин</p>
-                <p><strong>Автор:</strong> {{ recipe.author }}</p>
+                <p><strong>Автор:</strong> {{ recipe.author.last_name }} {{ recipe.author.first_name }}</p>
                 <p><strong>Дата добавления:</strong> {{ recipe.date_addition }}</p>
             </div>
 
@@ -28,7 +28,9 @@
         <div class="recipe_items_bottom">
             <p>{{ recipe.cooking_steps }}</p>
         </div>
+        {% if request.user.is_authenticated and recipe.author == user %}
         <button><a href="{% url 'recipe_update' recipe_id=recipe.pk %}">Изменить</a></button>
+        {% endif %}
     </div>
 
 
