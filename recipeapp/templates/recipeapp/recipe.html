@@ -29,8 +29,10 @@
             <p>{{ recipe.cooking_steps }}</p>
         </div>
         {% if request.user.is_authenticated and recipe.author == user %}
-        <button><a href="{% url 'recipe_update' recipe_id=recipe.pk %}">Изменить</a></button>
-        <button><a href="{% url 'delete_recipe_question' recipe_id=recipe.pk %}">Удалить</a></button>
+        <div class="buttons">
+            <a href="{% url 'recipe_update' recipe_id=recipe.pk %}"><button class="button">Изменить</button></a>
+            <a href="{% url 'delete_recipe_question' recipe_id=recipe.pk %}"><button class="button">Удалить</button></a>
+        </div>
         {% endif %}
     </div>
 

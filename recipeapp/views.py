@@ -7,21 +7,30 @@ from .models import Recipe, Category
 def index(request):
     title = 'Кушайте много, кушайте вкусно'
     heading = '5 случайных рецептов'
+    categories = Category.objects.all()
     recipes = Recipe.objects.filter(is_active=True).order_by('?')[:5]
-    return render(request, 'recipeapp/index.html', {'recipes': recipes, 'title': title, 'heading': heading})
+    return render(request, 'recipeapp/index.html', {'recipes': recipes,
+                                                    'title': title,
+                                                    'heading': heading,
+                                                    'categories': categories})
 
 
 def all_recipes(request):
     title = 'Все рецепты'
     heading = 'Все рецепты'
+    categories = Category.objects.all()
     recipes = Recipe.objects.filter(is_active=True).all()
-    return render(request, 'recipeapp/index.html', {'recipes': recipes, 'title': title, 'heading': heading})
+    return render(request, 'recipeapp/index.html', {'recipes': recipes,
+                                                    'title': title,
+                                                    'heading': heading,
+                                                    'categories': categories})
 
 
 
 def get_recipe_by_id(request, recipe_id):
     recipe = Recipe.objects.get(pk=recipe_id)
-    return render(request, 'recipeapp/recipe.html', {'recipe': recipe})
+    categories = Category.objects.all()
+    return render(request, 'recipeapp/recipe.html', {'recipe': recipe, 'categories': categories})
 
 
 @login_required
@@ -37,10 +46,12 @@ def add_recipe(request):
             return redirect('recipe', recipe.pk)
     else:
         form = RecipeForm()
+        categories = Category.objects.all()
     return render(request, 'recipeapp/recipe_form.html',
                   {'form': form,
                    'title': title,
-                   'input_value': input_value})
+                   'input_value': input_value,
+                   'categories': categories})
 
 
 @login_required()
@@ -63,10 +74,13 @@ def recipe_update_form(request, recipe_id):
 
     else:
         form = RecipeForm(instance=Recipe.objects.get(pk=recipe_id))
+        categories = Category.objects.all()
+
     return render(request, 'recipeapp/recipe_form.html',
                   {'form': form,
                    'title': title,
-                   'input_value': input_value})
+                   'input_value': input_value,
+                   'categories': categories})
 
 @login_required()
 def delete_recipe(request, recipe_id):
@@ -78,7 +92,8 @@ def delete_recipe(request, recipe_id):
 
 @login_required()
 def delete_recipe_question(request, recipe_id):
-    return render(request, 'recipeapp/delete_recipe_question.html', {'recipe_id': recipe_id})
+    categories = Category.objects.all()
+    return render(request, 'recipeapp/delete_recipe_question.html', {'recipe_id': recipe_id, 'categories': categories})
 
 
 def search_recipes(request):
@@ -89,24 +104,24 @@ def search_recipes(request):
             recipes = Recipe.objects.all().filter(title=title, is_active=True)
             title = 'Результат поиска'
             heading = 'Результат поиска'
-            return render(request, 'recipeapp/index.html', {'recipes': recipes, 'title': title, 'heading': heading})
+            categories = Category.objects.all()
+            return render(request, 'recipeapp/index.html', {'recipes': recipes,
+                                                            'title': title,
+                                                            'heading': heading,
+                                                            'categories': categories})
     else:
         form = SearchForm()
+        categories = Category.objects.all()
     return render(request, 'recipeapp/search_recipes_form.html',
-                  {'form': form})
-
-#TODO задать в шаблоне отображения рецептов минимальный размер карточки
-
-
-def categories(request):
-    title = 'Категории'
-    heading = 'Категории'
-    categories = Category.objects.all()
-    return render(request, 'recipeapp/categories.html', {'categories': categories, 'title': title, 'heading': heading})
+                  {'form': form, 'categories': categories})
 
 
 def recipes_by_categories(request, category_id):
     title = 'Рецепты по категории'
     heading = 'Все рецепты выбранной категории'
     recipes = Recipe.objects.filter(category=category_id)
-    return render(request, 'recipeapp/index.html', {'recipes': recipes, 'title': title, 'heading': heading})
+    categories = Category.objects.all()
+    return render(request, 'recipeapp/index.html', {'recipes': recipes,
+                                                    'title': title,
+                                                    'heading': heading,
+                                                    'categories': categories})

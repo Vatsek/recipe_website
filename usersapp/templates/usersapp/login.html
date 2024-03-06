@@ -2,26 +2,34 @@
 {% load static %}
 
 {% block style %}
-<link href="{% static 'usersapp/css/login.css' %}" rel="stylesheet">
+<link href="{% static 'usersapp/css/login_register.css' %}" rel="stylesheet">
 {% endblock %}
 
 
 {% block content %}
-    <div class="center-from">
-        <div class="login-card">
-            <h2>Авторизация</h2>
+<div class="center-from">
+    <div class="login-card">
+        <h2>Авторизация</h2>
 
-            <form method="post">
-                {% csrf_token %}
-                <input type="hidden" name="next" value="{{ request.GET.next }}"/>
-                {{ form.as_p }}
-                <p>
-                    <button type="submit">Войти</button>
-                </p>
-            </form>
-                <button type="submit">Регистрация</button>
-            <a href="{% url 'usersapp:register' %}">
-            </a>
-        </div>
+        <form class="login-card-items" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ request.GET.next }}"/>
+
+            <div class="form-error">{{ form.non_field_errors }}</div>
+            {% for f in form %}
+
+            <strong><label class="form-label" for="{{ f.id_for_label }}">{{ f.label }}</label></strong>
+            <p>{{ f }}</p>
+            <div class="form-error">{{ f.errors }}</div>
+
+            {% endfor %}
+            <p class="button-item">
+                    <button class="button" type="submit">Войти</button>
+            </p>
+        </form>
+        <a href="{% url 'usersapp:register' %}"><button class="button" type="submit">Регистрация</button></a>
     </div>
+</div>
 {% endblock %}
+
+
