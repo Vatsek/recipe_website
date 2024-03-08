@@ -48,6 +48,12 @@ font-family: 'Lato', sans-serif;
     height: 60px;
 }
 
+.header-items-center {
+    display: flex;
+    gap: 30px;
+}
+
+
 .header-items-right {
     width: 130px;
     display: flex;
@@ -96,16 +102,18 @@ font-family: 'Lato', sans-serif;
     border-radius: 10px;
 }
 
+.menu-button:hover .menu {
+    display: block;
+}
+
+
+
 .menu-items {
     margin-top: 10px;
     padding: 10px;
     display: flex;
     flex-direction: column;
     gap: 10px;
-}
-
-.menu-button:hover .menu {
-    display: block;
 }
 
 .text_menu {
@@ -142,4 +150,93 @@ font-family: 'Lato', sans-serif;
 .footer-contacts {
     display: flex;
     gap: 5px;
+}
+
+@media screen and (max-width: 1439px) {
+
+    .center {
+        max-width: 768px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .center2 {
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        align-items: center;
+    }
+
+    .header-items-center {
+        padding-left: 10px;
+        padding-right: 10px;
+        gap: 20px;
+    }
+
+}
+
+@media screen and (max-width: 767px) {
+
+    .center {
+        max-width: 375px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .center2 {
+        max-width: 350px;
+        margin-left: auto;
+        margin-right: auto;
+        align-items: center;
+    }
+
+    .header_icons_left {
+        width: 30px;
+        height: 30px;
+    }
+
+    .title {
+        display: None;
+    }
+
+    .header-items-left {
+        display: flex;
+        gap: 2px;
+        font-size: 7px;
+        align-items: center;
+    }
+
+    .header-items-right {
+        gap: 4px;
+
+    }
+
+    .header_link {
+        color: white;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: normal;
+        text-decoration: none;
+    }
+
+    .header-items-center {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .text-items-right {
+        display: flex;
+        flex-direction: column;
+        color: white;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: normal;
+    }
+
+    .header_icons_rigth {
+        width: 25px;
+        height: 25px;
+    }
+
+
 }
