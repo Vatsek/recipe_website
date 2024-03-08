@@ -48,3 +48,25 @@ a {
     color: black;
     text-decoration: none;
 }
+
+
+
+@media screen and (max-width: 1439px) {
+    .random-recipes-items {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .recipes-title {
+        text-align: center;
+    }
+
+    .random-recipes-items {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+    }
+}

@@ -15,7 +15,7 @@
 
 {% block content %}
     <div class="center2 recipes">
-        <h1>{{ heading }}</h1>
+        <h1 class="recipes-title" >{{ heading }}</h1>
         <section class="random-recipes-items">
             {% for recipe in recipes %}
                 <a href="{% url 'recipe' recipe_id=recipe.pk %}">

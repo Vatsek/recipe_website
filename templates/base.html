@@ -4,7 +4,9 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Сайт{% endblock %}</title>
+
 
     <link rel="stylesheet" href="{% static 'recipeapp/css/base.css' %}">
 
@@ -16,19 +18,18 @@
         <header class="center header-items">
             <a class="header_link" href="{% url 'index' %}">
                 <div class="header-items-left">
-                <img class="header_icons_left" src="{% static 'recipeapp/images/cooking.svg' %}" alt="cooking">
-                <p>Кушайте много Кушайте вкусно</p>
+                    <img class="header_icons_left" src="{% static 'recipeapp/images/cooking.svg' %}" alt="cooking">
+                    <p class="title">Кушайте много Кушайте вкусно</p>
                 </div>
                 </a>
-
+            <div class="header-items-center">
             <a class="header_link" href= "{% url 'all_recipes' %}">Показать все рецепты</a>
             <a class="header_link" href= "{% url 'add_recipe' %}">Добавить рецепт</a>
             <a class="header_link" href= "{% url 'search_recipes' %}">Найти рецепт</a>
-
-
             <div class="menu-button">
                 <p class="header_link">Категории ▼</p>
             <div class="menu">
+
 
                         <div>
                             <div class="menu-items">
@@ -37,6 +38,7 @@
                                 {% endfor %}
                             </div>
                         </div>
+            </div>
             </div>
             </div>
 
@@ -69,5 +71,10 @@
              </div>
         </div>
     </div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
 </body>
 </html>
