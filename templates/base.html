@@ -2,6 +2,8 @@
 
 <!DOCTYPE html>
 <html lang="ru">
+{% block style %}
+{% endblock %}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,8 +12,6 @@
 
     <link rel="stylesheet" href="{% static 'recipeapp/css/base.css' %}">
 
-    {% block style %}
-    {% endblock %}
 </head>
 <body>
     <div class="header">
@@ -26,9 +26,9 @@
             <a class="header_link" href= "{% url 'all_recipes' %}">Показать все рецепты</a>
             <a class="header_link" href= "{% url 'add_recipe' %}">Добавить рецепт</a>
             <a class="header_link" href= "{% url 'search_recipes' %}">Найти рецепт</a>
-            <div class="menu-button">
+            <nav class="dws-menu"> <!-- menu-button -->
                 <p class="header_link">Категории ▼</p>
-            <div class="menu">
+                <div class="menu">
 
 
                         <div>
@@ -38,11 +38,9 @@
                                 {% endfor %}
                             </div>
                         </div>
+                </div>
+            </nav>
             </div>
-            </div>
-            </div>
-
-
 
 
             <div class="header-items-right text-items-right">
